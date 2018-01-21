@@ -24,7 +24,6 @@ function toggle(elem, tog){
 
 function setTeams(teamsArray){
   teamContainer.innerHTML = ""
-  var holder = teamsArray
   var temp = []
   var length = teamsArray.length-1
   for(var i=length; i>(length-8); i--){
@@ -57,9 +56,9 @@ function createRounds(teams){
 }
 
 function setSpots(teams){
-  for(var i=0; i<8; i++){
-    toggle(teams[i], `spot${i+1}`)
-  }
+  teams.forEach(function(team, index){
+    toggle(teams[index], `spot${index+1}`)
+  })
   play.disabled = false
 }
 
@@ -130,7 +129,7 @@ function changeMatch(){
   }
   match++
   changePlayer()
-  return
+
 }
 
 function moveTeam(winner, spot){
